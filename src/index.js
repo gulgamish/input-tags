@@ -4,10 +4,10 @@ import InputTag from "./InputTag"
 
 ReactDOM.render(
     <div style={{
-        width: "200px",
-        height: "200px"
     }}>
-        <InputTag />
+        <InputTag style={{
+            width: "200px"
+        }} max={3} error={true} errorMessage="dldlmzldmzlmùdlzùzmfùafkùaefùzafmaùfmaeùfmaekùm" />
     </div>,
     document.getElementById("root")
 )
