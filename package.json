@@ -1,6 +1,10 @@
 {
   "name": "input-tags",
-  "version": "0.1.2",
+  "description": "Input tags",
+  "version": "0.1.0",
+  "author": "Ayman ELAMRANI",
+  "module": "src/index.js",
+  "main": "src/index.js",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",

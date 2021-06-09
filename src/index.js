@@ -3,7 +3,7 @@ import { Clear } from "@material-ui/icons"
 import React, { useEffect, useState } from 'react'
 import "./style.css"
 
-const InputTag = ({
+const InputTags = ({
     onChange = () => {},
     style = {},
     className = "",
@@ -85,4 +85,4 @@ const InputTag = ({
     )
 }
 
-export default InputTag;
+export default InputTags;
