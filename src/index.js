@@ -1,13 +1,88 @@
-import React from "react"
-import ReactDOM from 'react-dom'
-import InputTag from "./InputTag"
+import { Chip } from '@material-ui/core';
+import { Clear } from "@material-ui/icons"
+import React, { useEffect, useState } from 'react'
+import "./style.css"
 
-ReactDOM.render(
-    <div style={{
-    }}>
-        <InputTag style={{
-            width: "200px"
-        }} max={3} error={true} errorMessage="dldlmzldmzlmùdlzùzmfùafkùaefùzafmaùfmaeùfmaekùm" />
-    </div>,
-    document.getElementById("root")
-)
+const InputTag = ({
+    onChange = () => {},
+    style = {},
+    className = "",
+    max = -1,
+}) => {
+    const [ tags, setTags ] = useState([]);
+    const [ value, setValue ] = useState("");
+    const [ isActive, setActive ] = useState(false);
+
+    useEffect(() => {
+        if (tags.length > 0)
+            setActive(true);
+        else
+            setActive(false);
+    }, [tags]);
+
+    const onKeyUp = (e) => {
+        const tag = value.slice(0, -1);
+        
+        if (e.key === " ") {
+            if (tags.filter(elem => elem === tag).length == 0 && tag.length != 0) {
+                setTags([
+                    ...tags,
+                    tag
+                ]);
+                onChange(tag);
+            }
+            setValue("");
+        }
+        if (e.key === "Backspace") {
+            if (value.length != 0)
+                setValue("");
+            else {
+                const newTags = tags.filter((value, index) => index < tags.length - 1);
+                setTags(newTags);
+            }
+        }
+    }
+
+    return (
+        <div className={`container ${className}`} style={style}>
+            <div
+                className={`tags-container`}
+            >
+                {tags.map(tag => (
+                    <Chip
+                        variant="outlined"
+                        color="primary"
+                        label={tag}
+                        key={tag}
+                        className="tag"
+                        onDelete={() => {
+                            setTags(
+                                tags.filter(value => value != tag)
+                            )
+                        }}
+                    />
+                ))}
+                <input
+                    className="input-tag"
+                    value={value}
+                    onChange={(e) => {
+                        setValue(e.target.value);
+                    }}
+                    placeholder="Enter tag"
+                    onKeyUp={onKeyUp}
+                    disabled={tags.length == max}
+                />
+                <div
+                    className={`clear-tags ${isActive ? "clear-tags-active" : ""}`}
+                    onClick={() => {
+                        setTags([]);
+                    }}    
+                >
+                    <Clear />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default InputTag;

@@ -5,7 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .input-tag:disabled {
@@ -32,6 +32,7 @@
   justify-content: center;
   display: none;
   padding: 2px;
+  align-self: center;
 }
 
 .clear-tags:hover {
@@ -45,16 +46,5 @@
 .container {
   display: flex;
   flex-direction: column;
-  overflow: auto;
   width: 100%;
-}
-
-.error-msg {
-  color: #b00020;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.error {
-  border: 1px solid #b00020;
 }
