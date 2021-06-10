@@ -1,10 +1,10 @@
 {
   "name": "input-tags",
   "description": "Input tags",
-  "version": "0.1.0",
+  "version": "0.3.1",
   "author": "Ayman ELAMRANI",
-  "module": "src/index.js",
-  "main": "src/index.js",
+  "module": "dist/index.js",
+  "main": "dist/index.js",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
@@ -17,10 +17,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "babel src/ --out-dir dist && cp -R src/style.css dist/"
   },
   "eslintConfig": {
     "extends": [
@@ -51,5 +48,10 @@
     "components",
     "input",
     "tags"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.5",
+    "@babel/preset-react": "^7.14.5"
+  }
 }
